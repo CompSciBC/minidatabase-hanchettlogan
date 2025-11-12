@@ -1,0 +1,17 @@
+# Ignore compiled executables and temporary build files
+*.out
+*.exe
+*.o
+*.obj
+*.log
+
+# Ignore test outputs
+/tests/run_tests
+
+# Ignore JSON files (for autograder logs or configs)
+*.json
+
+# Ignore VSCode and system files
+.vscode/
+.DS_Store
+Thumbs.db
