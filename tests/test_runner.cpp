@@ -89,7 +89,7 @@ int main() {
         int cmp = 0;
         auto rows = eng.rangeById(1000400, 1001000, cmp); // expect 1000456, 1000789, 1000811
         ts.check((int)rows.size() == 3, "rangeById returns 3 rows in [1000400..1001000]");
-        bool saw_456=false, saw_789=false, saw_811=false;
+        bool saw_456 = false, saw_789 = false, saw_811 = false;
         for (auto* r : rows) {
             if (r->id == 1000456) saw_456 = true;
             if (r->id == 1000789) saw_789 = true;
@@ -132,7 +132,7 @@ int main() {
     // --- Test: insertRecord + prefix again ---
     {
         int cmp = 0;
-        eng.insertRecord({1003000, "Smith", "Jordan", "Math", 3.80, false});
+        eng.insertRecord({ 1003000, "Smith", "Jordan", "Math", 3.80, false });
         auto rows = eng.prefixByLast("SMI", cmp); // test case-insensitive again
         int cnt = 0;
         for (auto* r : rows) if (r->last.rfind("Smith", 0) == 0) ++cnt;
@@ -141,5 +141,5 @@ int main() {
     }
 
     return ts.summarize();
-}
 };
+}
