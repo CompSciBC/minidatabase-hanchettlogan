@@ -43,7 +43,9 @@ struct Engine {
         }
         else
         {
-            lastIndex.insert(key, vector<int>{recordID});
+            vector<int> temp;
+            temp.push_back(recordID);
+            lastIndex.insert(key, temp);
         }
         return recordID;
     }
