@@ -19,7 +19,8 @@ static inline string toLower(string s) {
 // Acts like a small "database engine" that manages records and two BST indexes:
 // 1) idIndex: maps student_id → record index (unique key)
 // 2) lastIndex: maps lowercase(last_name) → list of record indices (non-unique key)
-struct Engine {
+struct Engine 
+{
     vector<Record> heap;                  // the main data store (simulates a heap file)
     BST<int, int> idIndex;                // index by student ID
     BST<string, vector<int>> lastIndex;   // index by last name (can have duplicates)
@@ -37,6 +38,7 @@ struct Engine {
 
         string key = toLower(recIn.last);
         vector<int>* vector = lastIndex.find(key);
+
         if (vector)
         {
             vector->push_back(recordID);
@@ -52,25 +54,30 @@ struct Engine {
 
     // Deletes a record logically (marks as deleted and updates indexes)
     // Returns true if deletion succeeded.
-    bool deleteById(int id) {
+    bool deleteById(int id) 
+    {
         //TODO
     }
 
     // Finds a record by student ID.
     // Returns a pointer to the record, or nullptr if not found.
     // Outputs the number of comparisons made in the search.
-    const Record *findById(int id, int &cmpOut) {
-        //TODO    }
+    const Record *findById(int id, int &cmpOut) 
+    {
+        //TODO    
+    }
 
     // Returns all records with ID in the range [lo, hi].
     // Also reports the number of key comparisons performed.
-    vector<const Record *> rangeById(int lo, int hi, int &cmpOut) {
+    vector<const Record *> rangeById(int lo, int hi, int &cmpOut) 
+    {
         //TODO
     }
 
     // Returns all records whose last name begins with a given prefix.
     // Case-insensitive using lowercase comparison.
-    vector<const Record *> prefixByLast(const string &prefix, int &cmpOut) {
+    vector<const Record *> prefixByLast(const string &prefix, int &cmpOut) 
+    {
         //TODO
     }
 };
