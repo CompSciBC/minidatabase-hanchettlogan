@@ -37,11 +37,11 @@ struct Engine
         idIndex.insert(recIn.id, recordID);
 
         string key = toLower(recIn.last);
-        vector<int>* vector = lastIndex.find(key);
+        vector<int>* position = lastIndex.find(key);
 
-        if (vector)
+        if (position)
         {
-            vector->push_back(recordID);
+            position->push_back(recordID);
         }
         else
         {
