@@ -56,7 +56,35 @@ struct Engine
     // Returns true if deletion succeeded.
     bool deleteById(int id) 
     {
-        //TODO
+        // Finds id index
+        int* recIDptr = idIndex.find(id);
+        if (!recIDptr) 
+        {
+            return false;
+        }
+        int recordID = *recIDptr;
+
+        // soft deletion
+        heap[recordID].deleted = true;
+
+        // removes key
+        idIndex.erase(id);
+
+        // Removes recordID from last name vector
+        string key = toLower(heap[recordID].last);
+        vector<int>* vect = = lastIndex.find(key);
+
+        if (vect) 
+        {
+            vect->erase(remove(vect->begin(), vect->end(), recordID), vect->end());
+
+            // removes key from lastIndex
+            if (vect->empty()) 
+            {
+                lastIndex.erase();
+            }
+        }
+        return true;
     }
 
     // Finds a record by student ID.
