@@ -5,7 +5,8 @@
 #include <vector>     
 #include "BST.h"      
 #include "Record.h"
-//add header files as needed
+#include <algorithm>
+#include <cctype>
 
 using namespace std;
 
@@ -160,7 +161,7 @@ struct Engine
         lastIndex.resetMetrics();
 
         // find all in [low, high]
-        ; lastIndex.rangeApply(low, high, [&](const string& key, vector<int>& vect)
+        lastIndex.rangeApply(low, high, [&](const string& key, vector<int>& vect)
         {
                 if (key.compare(0, low.size(), low) == 0) 
                 {
