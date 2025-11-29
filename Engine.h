@@ -81,7 +81,7 @@ struct Engine
             // removes key from lastIndex
             if (vect->empty()) 
             {
-                lastIndex.erase();
+                lastIndex.erase(key);
             }
         }
         return true;
