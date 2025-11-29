@@ -92,7 +92,30 @@ struct Engine
     // Outputs the number of comparisons made in the search.
     const Record *findById(int id, int &cmpOut) 
     {
-        //TODO    
+        // resets comparisons to 0
+        idIndex.resetMetrics();
+
+        // searches id index
+        int* recIDptr = idIndex.find(id);  
+
+        // num of comparisons
+        cmpOut = idIndex.comparisons;
+
+        // if not found
+        if(!recIDptr)
+        {
+            return nullptr;
+        }
+
+        int recordID = *recIDptr;
+
+        // soft deletion
+        if (heap[recordID].deleted) 
+        {
+            return nullptr;
+        }
+
+        return &heap[recordID];
     }
 
     // Returns all records with ID in the range [lo, hi].
