@@ -72,7 +72,7 @@ struct Engine
 
         // Removes recordID from last name vector
         string key = toLower(heap[recordID].last);
-        vector<int>* vect = = lastIndex.find(key);
+        vector<int>* vect = lastIndex.find(key);
 
         if (vect) 
         {
@@ -132,12 +132,12 @@ struct Engine
         {
             (void)key;
 
-            if (recordID <= 0 && recordID < static_cast<int>(heap.size()) && !heap[recordID].deleted)
+            if (recordID >= 0 && recordID < static_cast<int>(heap.size()) && !heap[recordID].deleted)
             {
                 result.push_back(&heap[recordID]);
             }
 
-        };
+        });
         // num of comparisons
         cmpOut = idIndex.comparisons;
 
@@ -172,7 +172,7 @@ struct Engine
                         }
                     }
                 }
-        };
+        });
         cmpOut = lastIndex.comparisons;
 
         return result;
