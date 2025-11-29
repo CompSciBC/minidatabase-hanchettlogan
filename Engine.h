@@ -148,7 +148,34 @@ struct Engine
     // Case-insensitive using lowercase comparison.
     vector<const Record *> prefixByLast(const string &prefix, int &cmpOut) 
     {
-        //TODO
+        vector<const Record*> result;
+
+        // lowercase
+        string low = toLower(prefix);
+        string high = low;
+
+        high.push_back(char(127));
+
+        // resets comparison counter
+        lastIndex.resetMetrics();
+
+        // find all in [low, high]
+        ; lastIndex.rangeApply(low, high, [&](const string& key, vector<int>& vect)
+        {
+                if (key.compare(0, low.size(), low) == 0) 
+                {
+                    for (int recordID : vect) 
+                    {
+                        if (recordID >= 0 && recordID < static_cast<int>(heap.size()) && !heap[recordID].deleted) 
+                        {
+                            result.push_back(&heap[recordID]);
+                        }
+                    }
+                }
+        };
+        cmpOut = lastIndex.comparisons;
+
+        return result;
     }
 };
 
